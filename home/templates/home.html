@@ -1,0 +1,35 @@
+{% extends 'index.html'%}
+
+{% block title %} Seja bem vindo! {% endblock %}
+
+    {% block main %}
+
+        <div class="">
+            <div id="header">
+                <h1>Seja Bem Vindo!</h1>
+            </div>
+
+            <div id="sub-header">
+                <h3>Faça o login para ter acesso à lista de clientes</h3>
+            </div>
+    
+            {% if user.is_authenticated %}
+                <div id="btn_logout">
+                    <a href="{% url 'logout' %}">Sair</a>
+                    <a href="{% url 'login' %}">Acessar Lista</a>
+                </div>
+                
+            {% else %}
+                <div class="button-container">
+                    <button class="button" type="submit"><a href="{% url 'login' %}">Acessar</a></button>
+                </div>
+            {% endif %}
+
+            <div id="footer">
+                <p>Desenvolvido por <a href="https://github.com/verasdan">Dan Veras</a>.</p>
+            </div>
+        
+        </div>
+
+    {% endblock %}
+        

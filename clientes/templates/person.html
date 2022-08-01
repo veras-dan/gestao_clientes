@@ -1,0 +1,39 @@
+{% extends 'index.html'%}
+
+{% block title %} Lista de clientes {% endblock %}
+
+{% block main %}
+<div id="content-page">
+    <div id="nav-header">
+        <h3>Sistema de Gestão de Clientes</h3>
+        <p>Olá {{ user.username }}, <a href="{% url 'logout' %}">Sair</a></p>
+        
+    </div>
+
+
+    <div id="btn-add">
+        <a href="{% url 'person_new' %}">Cadastrar</a>
+    </div>
+    
+
+    <div id="lista">
+        <table>
+            <tr>
+                <td><strong>Nome</strong></td>
+                <td><strong>Idade</strong></td>
+                <td><Strong>Ação</Strong></td>
+            </tr>
+            {% for person in persons %}
+            <tr>
+                <td><a href="{% url 'persons_update' person.id %}">{{ person.first_name }}</a></td>
+                <td>{{ person.age }}</td>
+                <td><a href="{% url 'persons_delete' person.id %}">Deletar</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    
+</div>
+    
+{% endblock %}
